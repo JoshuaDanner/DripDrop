@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DripDrop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WeatherViewController" customModule="DripDrop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,8 +42,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c2T-K8-SMl">
-                                <rect key="frame" x="11" y="237" width="349" height="232"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c2T-K8-SMl">
+                                <rect key="frame" x="131.5" y="265.5" width="112.5" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GLm-ez-qWh">
                                     <size key="itemSize" width="175" height="227"/>
@@ -52,28 +52,35 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ybk-p0-uF7">
-                                        <rect key="frame" x="0.0" y="2.5" width="175" height="227"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WeatherCell" id="ybk-p0-uF7" customClass="WeatherCollectionViewCell" customModule="DripDrop" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-13.5" width="175" height="227"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="175" height="227"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RN4-jj-cRM">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Summary)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RN4-jj-cRM">
                                                     <rect key="frame" x="17.5" y="8" width="140" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlq-bv-Dp4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Day of Week)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlq-bv-Dp4">
                                                     <rect key="frame" x="17" y="186" width="140" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ModSleetSwrsNight" translatesAutoresizingMaskIntoConstraints="NO" id="Ma8-xA-zjg">
-                                                    <rect key="frame" x="44" y="56.5" width="87.5" height="113.5"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clear" translatesAutoresizingMaskIntoConstraints="NO" id="Ma8-xA-zjg">
+                                                    <rect key="frame" x="61.5" y="79" width="52.5" height="68.5"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(Temp)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFG-LA-NHV">
+                                                    <rect key="frame" x="66" y="39" width="55" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.41568627450000001" green="0.56862745100000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -84,11 +91,17 @@
                                             <constraint firstItem="RN4-jj-cRM" firstAttribute="centerX" secondItem="ybk-p0-uF7" secondAttribute="centerX" id="U4I-72-jdX"/>
                                             <constraint firstItem="Ma8-xA-zjg" firstAttribute="centerX" secondItem="ybk-p0-uF7" secondAttribute="centerX" id="agY-Mb-tFy"/>
                                             <constraint firstItem="RN4-jj-cRM" firstAttribute="width" secondItem="ybk-p0-uF7" secondAttribute="width" multiplier="0.8" id="dPg-ie-DnO"/>
-                                            <constraint firstItem="Ma8-xA-zjg" firstAttribute="height" secondItem="ybk-p0-uF7" secondAttribute="height" multiplier="0.5" id="fTG-r8-Gr2"/>
+                                            <constraint firstItem="Ma8-xA-zjg" firstAttribute="height" secondItem="ybk-p0-uF7" secondAttribute="height" multiplier="0.3" id="fTG-r8-Gr2"/>
                                             <constraint firstItem="Dlq-bv-Dp4" firstAttribute="centerX" secondItem="ybk-p0-uF7" secondAttribute="centerX" id="nha-R1-vrk"/>
                                             <constraint firstAttribute="bottom" secondItem="Dlq-bv-Dp4" secondAttribute="bottom" constant="20" id="xyt-kX-yYp"/>
-                                            <constraint firstItem="Ma8-xA-zjg" firstAttribute="width" secondItem="ybk-p0-uF7" secondAttribute="width" multiplier="0.5" id="z0R-Sv-7HD"/>
+                                            <constraint firstItem="Ma8-xA-zjg" firstAttribute="width" secondItem="ybk-p0-uF7" secondAttribute="width" multiplier="0.3" id="z0R-Sv-7HD"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="dayOfTheWeekLabel" destination="Dlq-bv-Dp4" id="MNI-5u-ziF"/>
+                                            <outlet property="iconImageView" destination="Ma8-xA-zjg" id="h9r-PR-8b2"/>
+                                            <outlet property="summaryLabel" destination="RN4-jj-cRM" id="I5k-lu-0JA"/>
+                                            <outlet property="tempLabel" destination="oFG-LA-NHV" id="Ya4-9Q-fhq"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -105,6 +118,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="ICO-4S-NS4"/>
+                    <connections>
+                        <outlet property="cityLabel" destination="4Jw-dL-uRD" id="3eY-2X-Vv2"/>
+                        <outlet property="summaryLabel" destination="HMK-Uy-bEd" id="6jf-it-Dm3"/>
+                        <outlet property="temperatureLabel" destination="YnA-hR-7ec" id="9q1-KR-XYi"/>
+                        <outlet property="weatherCollectionView" destination="c2T-K8-SMl" id="89d-vi-Cqp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -130,6 +149,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ModSleetSwrsNight" width="206" height="227"/>
+        <image name="Clear" width="193" height="196"/>
     </resources>
 </document>
